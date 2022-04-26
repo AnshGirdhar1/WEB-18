@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+ <style>
+      * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        #container {
+            width:80%;
+            margin:auto;
+            text-align: center;
+        }
+
+        #container h1 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        #cardSection {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap:20px;
+            padding-top: 10px;
+        }
+
+        #cardSection>div {
+            box-shadow: 1px 1px 15px rgb(205, 204, 204);
+            border-radius: 10px;
+        }
+
+        #cardSection>div>img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        #cardSection>div>.logo {
+            width:100px;
+            height:auto;
+        }
+
+        #cardSection>div>h3{
+            margin-bottom:-10px;
+            font-weight: 600;
+        }
+
+        #cardSection>div>p {
+            color:gray;
+            font-size: 13px;
+            margin-bottom:0px;
+        }
+ </style>   
+</body>
+</html>
+<script>
+    var investorInfo = JSON.parse(localStorage.getItem("InvestorArr"));
+    console.log(investorInfo);
+    var mainDiv = document.createElement("div");
+   document.querySelector("body").append(mainDiv);
+   mainDiv.setAttribute("id","container");
+   var mainHeading = document.createElement("h1");
+   mainHeading.innerText = "Strategic Investors";
+   mainDiv.append(mainHeading);
+   var cardSection = document.createElement("div");
+   cardSection.setAttribute("id","cardSection");
+   mainDiv.append(cardSection);
+   investorInfo.forEach(function(elem){
+       var innerDiv = document.createElement("div");
+       document.querySelector("#cardSection").append(innerDiv);
+       var image = document.createElement("img");
+       image.setAttribute("src",elem.ImageURL);
+       var name = document.createElement("h3");
+       name.innerText = elem.investorName;
+       var position = document.createElement("p");
+       position.innerText = elem.investorRole;
+       var logo = document.createElement("img");
+       logo.setAttribute("src",elem.Companylogo);
+       logo.setAttribute("class","logo");
+       innerDiv.append(image,name,position,logo);
+   })
+</script>
