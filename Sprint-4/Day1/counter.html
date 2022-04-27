@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    body {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    button {
+        width:20%;
+        background-color: #ed0331;
+        border: 0px;
+        padding:20px  0;
+        color:#fff;
+        border-radius: 5px;
+        margin-left: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 18px;
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+</head>
+<body>
+    <h1></h1>
+    <button id="add">Increase</button>
+    <button id="less">Decrease</button>
+</body>
+</html>
+<script>
+    var count = localStorage.getItem("counter") || 0;
+    document.querySelector("h1").innerText = localStorage.getItem("counter") || 0;
+    document.querySelector("#add").addEventListener("click",increase);
+    document.querySelector("#less").addEventListener("click",decrease);
+
+    function increase(){
+        count++;
+        document.querySelector("h1").innerText = count;
+        localStorage.setItem("counter",count);
+    }
+
+    function decrease(){
+        count--;
+        document.querySelector("h1").innerText = count;
+        localStorage.setItem("counter",count);
+    }
+
+</script>

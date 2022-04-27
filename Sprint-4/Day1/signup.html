@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        #container {
+            width:35%;
+            box-shadow: 1px 1px 15px rgb(242, 242, 242);
+            padding:30px;
+            border-radius: 10px;
+            margin: 50px auto;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 0;
+        }
+
+        input {
+            width:100%;
+            padding:15px;
+            border:1px solid rgb(210, 208, 208);
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #ed0331;
+            color:#fff;
+            font-weight: 600;
+            font-size: 15px;
+            border:0px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        input:focus {
+            outline:none;
+        }
+
+        input::placeholder {
+            color:rgb(210, 208, 208);
+        }
+
+        a {
+            width:100%;
+            display: block;
+            color:#fff;
+            font-weight: 600;
+            font-size: 15px;
+            border:0px;
+            margin-top: 30px;
+            cursor: pointer;
+            background-color: rgb(16, 16, 167);
+            text-decoration: none;
+            text-align: center;
+            padding:15px 0;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form id="signupForm">
+            <h3>Sign Up</h3>
+            <p>Full Name</p>
+            <input id="name" type="text" placeholder="Enter your full name" required/>
+            <p>Email</p>
+            <input id="email" type="email" placeholder="Enter email" required/>
+            <p>Password</p>
+            <input id="password" type="password" placeholder="Enter Password" required/>
+            <input type="submit" value="Sign Up"/>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",signup);
+    function signup() {
+        event.preventDefault();
+        var signupData = {
+            Name: signupForm.name.value,
+            Email: signupForm.email.value,
+            Password : signupForm.password.value
+        }
+        localStorage.setItem("userData",JSON.stringify(signupData));
+        alert("Signup Successful");
+        console.log("Done");
+        var loginButton = document.createElement("a");
+        loginButton.setAttribute("href","login.html")
+        loginButton.innerText = "Login";
+        document.querySelector("#container").append(loginButton);
+    }
+</script>
